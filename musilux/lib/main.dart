@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'theme/colors.dart';
@@ -36,6 +37,13 @@ import 'screens/admin/soporte_dashboard.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // flutter_stripe requiere que publishableKey esté seteado antes de runApp.
+  // El valor real se sobreescribe desde el backend antes de cada PaymentSheet.
+  Stripe.publishableKey = const String.fromEnvironment(
+    'STRIPE_PK',
+    defaultValue: 'pk_test_placeholder',
+  );
 
   // Inicializar providers y restaurar sesión antes de mostrar la UI
   final authProvider = AuthProvider();
