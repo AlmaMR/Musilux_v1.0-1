@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Musilux Admin',
+                      'Musilux',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -194,6 +194,41 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'Iniciar sesión',
                                 style: TextStyle(fontSize: 16),
                               ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    // Ir a registrarse
+                    TextButton(
+                      onPressed: () => Navigator.of(context)
+                          .pushNamedAndRemoveUntil(
+                              AppRoutes.perfil, (_) => false),
+                      child: const Text(
+                        '¿No tienes cuenta? Regístrate aquí',
+                        style: TextStyle(color: AppColors.primaryPurple),
+                      ),
+                    ),
+
+                    const Divider(height: 28),
+
+                    // Ir a la tienda sin iniciar sesión
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        icon: const Icon(Icons.store_outlined),
+                        label: const Text('Ir a la tienda'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppColors.primaryPurple,
+                          side: const BorderSide(color: AppColors.primaryPurple),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        onPressed: () => Navigator.of(context)
+                            .pushNamedAndRemoveUntil(
+                                AppRoutes.catalogoPublico, (_) => false),
                       ),
                     ),
                   ],

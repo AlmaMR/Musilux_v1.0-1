@@ -150,7 +150,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<void> _cerrarSesion() async {
     await _authService.logout();
     if (!mounted) return;
-    Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.login, (_) => false);
+    Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.catalogoPublico, (_) => false);
   }
 
   @override
